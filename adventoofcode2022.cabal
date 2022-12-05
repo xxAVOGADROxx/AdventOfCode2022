@@ -28,6 +28,7 @@ executable adventoofcode2022
     other-modules:   D1
                      D2
                      D3
+                     D4
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
