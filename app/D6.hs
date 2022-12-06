@@ -1,26 +1,24 @@
 module D6 where
 
 main :: IO ()
-main = interact $ show . solve'
-  where
-    solve' x = solve4 x 4 -- change 4 or 14
+main = interact $ show . solve4 4 --solve4 4 or solve14 14
 
-repeat' :: String -> Bool
-repeat' [] = False
-repeat' (x : xs)
+findRep :: String -> Bool
+findRep [] = False
+findRep (x : xs)
   | any f xs = True
-  | otherwise = repeat' xs
+  | otherwise = findRep xs
   where
     f y = x == y
 
 --first part
-solve4 :: String -> Int -> Int
-solve4 xs n
-  | repeat' (take 4 xs) = solve4 (tail xs) (n + 1)
+solve4 :: Int -> String -> Int
+solve4 n xs
+  | findRep (take 4 xs) = solve (n + 1) (tail xs)
   | otherwise = n
 
 --second part
-solve14 :: String -> Int -> Int
-solve14 xs n
-  | repeat' (take 14 xs) = solve14 (tail xs) (n + 1)
+solve14 :: Int -> String -> Int
+solve14 n xs
+  | findRep (take 14 xs) = solve (n + 1) (tail xs)
   | otherwise = n

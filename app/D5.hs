@@ -23,7 +23,7 @@ ship =
     ]
 
 move :: Matrix -> Int -> Int -> Int -> Matrix
-move (Matrix m) q i o = Matrix $ replace (replace m ((o - 1), nStake)) ((i -1), mStake) --map (f . g ) m
+move (Matrix m) q i o = Matrix $ replace (replace m (o - 1, nStake)) (i -1, mStake)
   where
     nCut = take q . reverse $ m !! (i - 1)
     mStake = reverse . drop q . reverse $ m !! (i -1)
@@ -53,5 +53,5 @@ replace [] _ = []
 replace (_ : xs) (0, a) = a : xs
 replace (x : xs) (n, a) =
   if n < 0
-    then (x : xs)
+    then x : xs
     else x : replace xs (n -1, a)
