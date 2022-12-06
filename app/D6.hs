@@ -14,11 +14,11 @@ findRep (x : xs)
 --first part
 solve4 :: Int -> String -> Int
 solve4 n xs
-  | findRep (take 4 xs) = solve (n + 1) (tail xs)
+  | findRep (take 4 xs) = solve4 (n + 1) (tail xs)
   | otherwise = n
 
 --second part
 solve14 :: Int -> String -> Int
 solve14 n xs
-  | findRep (take 14 xs) = solve (n + 1) (tail xs)
+  | findRep (take 14 xs) = solve14 (n + 1) (tail xs)
   | otherwise = n
